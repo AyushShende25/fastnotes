@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.idea/
+.vscode/
+**/coverage
+**/.env
+**/.aws
+**/.ssh
+README.md
+**/.DS_Store

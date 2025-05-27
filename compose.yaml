@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastnotes_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://fastnotes_admin:fastnotes_admin@db:5432/fastnotes_db
+    volumes:
+      - .:/usr/src/app
+    restart: unless-stopped
+  db:
+    image: postgres:17
+    container_name: fastnotes_db
+    environment:
+      - POSTGRES_USER=fastnotes_admin
+      - POSTGRES_PASSWORD=fastnotes_admin
+      - POSTGRES_DB=fastnotes_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:

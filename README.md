@@ -50,3 +50,19 @@ FastNotes is a lightweight and asynchronous RESTful API for a simple note-taking
     ```bash
     uv run fastapi dev app/main.py
     ```
+
+### With Docker
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AyushShende25/fastnotes.git
+   cd fastnotes
+   ```
+2. **Run Containers**
+    ```bash
+    docker compose up
+    ```
+3. **Apply Migrations**
+    ```bash
+    docker compose exec api uv run alembic upgrade head
+    ```
